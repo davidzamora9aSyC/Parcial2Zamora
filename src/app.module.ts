@@ -20,6 +20,13 @@ import { ArtworkModule } from './artwork/artwork.module';
 import { ExhibitionModule } from './exhibition/exhibition.module';
 import { SponsorModule } from './sponsor/sponsor.module';
 import { MuseumArtworkModule } from './museum-artwork/museum-artwork.module';
+import { ProfesorModule } from './profesor/profesor.module';
+import { PropuestaModule } from './propuesta/propuesta.module';
+import { ProyectoModule } from './proyecto/proyecto.module';
+import { EstudianteModule } from './estudiante/estudiante.module';
+import { ProfesorPropuestaModule } from './profesor-propuesta/profesor-propuesta.module';
+import { ProyectoPropuestaModule } from './proyecto-propuesta/proyecto-propuesta.module';
+import { ProyectoEstudianteModule } from './proyecto-estudiante/proyecto-estudiante.module';
 
 @Module({
   imports: [GestorModule, ClienteModule, ReporteModule, TransferenciaModule, TemaEducativoModule, RecursoEducativoModule,
@@ -46,6 +53,13 @@ import { MuseumArtworkModule } from './museum-artwork/museum-artwork.module';
     ExhibitionModule,
     SponsorModule,
     MuseumArtworkModule,
+    ProfesorModule,
+    PropuestaModule,
+    ProyectoModule,
+    EstudianteModule,
+    ProfesorPropuestaModule,
+    ProyectoPropuestaModule,
+    ProyectoEstudianteModule,
   ],
   controllers: [AppController],
   providers: [AppService],
