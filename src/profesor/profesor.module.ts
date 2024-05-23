@@ -1,4 +1,12 @@
 import { Module } from '@nestjs/common';
+import { ProfesorService } from './profesor.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ProfesorEntity } from './profesor.entity/profesor.entity';
 
-@Module({})
-export class ProfesorModule {}
+@Module({
+  providers: [ProfesorService],
+  imports: [TypeOrmModule.forFeature([ProfesorEntity])],
+})
+export class ProfesorModule {
+  constructor(private readonly profesorService: ProfesorService) {}
+}
