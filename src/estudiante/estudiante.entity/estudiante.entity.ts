@@ -2,7 +2,7 @@
 
 import { ProfesorEntity } from 'src/profesor/profesor.entity/profesor.entity';
 import { PropuestaEntity } from 'src/propuesta/propuesta.entity/propuesta.entity';
-import { Column, Entity, ManyToMany, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToMany, OneToMany, PrimaryGeneratedColumn, UsingJoinColumnIsNotAllowedError } from 'typeorm';
 import { OneToOne } from 'typeorm';
 import { ManyToOne } from 'typeorm';
 import { ProyectoEntity } from 'src/proyecto/proyecto.entity/proyecto.entity';
@@ -22,8 +22,7 @@ export class EstudianteEntity {
 
    
    @OneToOne(() => ProyectoEntity, proyecto => proyecto.estudiante)
+   @JoinColumn()
     proyecto:ProyectoEntity;
-
-
 
 }

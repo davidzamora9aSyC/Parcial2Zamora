@@ -14,26 +14,32 @@ import { UseInterceptors } from '@nestjs/common';
 export class PropuestaController {
     constructor(private readonly propuestaService: PropuestaService) {}
 
-  @Get()
-  async findAll() {
+    @Get()
+    async findAll() {
     return await this.propuestaService.findAll();
-  }
+    }
 
-  @Get(':propuestaId')
-  async findOne(@Param('propuestaId') propuestaId: string) {
+    @Get(':propuestaId')
+    async findOne(@Param('propuestaId') propuestaId: string) {
     return await this.propuestaService.findOne(propuestaId);
-  }
+    }
 
-  @Post()
-  async create(@Body() propuestaDto: PropuestaDto) {
-    const propuesta: PropuestaEntity = plainToInstance(PropuestaEntity, propuestaDto);
-    return await this.propuestaService.create(propuesta);
-  }
+    @Post()
+    async create(@Body() propuestaDto: PropuestaDto) {
+        const propuesta: PropuestaEntity = plainToInstance(PropuestaEntity, propuestaDto);
+        return await this.propuestaService.create(propuesta);
+    }
 
 
-  @Delete(':propuestaId')
-  @HttpCode(204)
-  async delete(@Param('propuestaId') propuestaId: string) {
+    @Delete(':propuestaId')
+    @HttpCode(204)
+    async delete(@Param('propuestaId') propuestaId: string) {
     return await this.propuestaService.delete(propuestaId);
-  }
+    }
+
+    @Post(':propuestaId/proyectos/:proyectoId')
+    async addProyectoPropuesta(@Param('propuestaId') propuestaId: string, @Param('proyectoId') proyectoId: string){
+        return await this.propuestaService.addProyectoPropuesta(propuestaId, proyectoId);
+    }
+
 }

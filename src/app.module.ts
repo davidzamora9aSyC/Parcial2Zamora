@@ -27,17 +27,25 @@ import { EstudianteModule } from './estudiante/estudiante.module';
 import { ProfesorPropuestaModule } from './profesor-propuesta/profesor-propuesta.module';
 import { ProyectoPropuestaModule } from './proyecto-propuesta/proyecto-propuesta.module';
 import { ProyectoEstudianteModule } from './proyecto-estudiante/proyecto-estudiante.module';
+import { PropuestaEntity } from './propuesta/propuesta.entity/propuesta.entity';
+import { ProfesorEntity } from './profesor/profesor.entity/profesor.entity';
+import { ProyectoEntity } from './proyecto/proyecto.entity/proyecto.entity';
+import { EstudianteEntity } from './estudiante/estudiante.entity/estudiante.entity';
+import { ArtworkEntity } from './artwork/artwork.entity/artwork.entity';
+import { ExhibitionEntity } from './exhibition/exhibition.entity/exhibition.entity';
+import { SponsorEntity } from './sponsor/sponsor.entity/sponsor.entity';
 
 @Module({
   imports: [GestorModule, ClienteModule, ReporteModule, TransferenciaModule, TemaEducativoModule, RecursoEducativoModule,
     TypeOrmModule.forRoot({
+      autoLoadEntities: true,
       type: 'postgres',
       host: 'localhost',
       port: 5433,
       username: 'postgres',
       password: 'postgres',
       database: 'Parcial',
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      entities: [PropuestaEntity, ProfesorEntity, ProyectoEntity, EstudianteEntity, ArtworkEntity, ExhibitionEntity, SponsorEntity],
       dropSchema: true,
       synchronize: true,
       keepConnectionAlive: true
