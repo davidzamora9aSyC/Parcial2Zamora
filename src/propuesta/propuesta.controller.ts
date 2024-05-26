@@ -1,13 +1,13 @@
 import { Controller } from '@nestjs/common';
-
-
-/* eslint-disable prettier/prettier */
-import { Body,  Delete, Get, HttpCode, Param, Post, Put, UseInterceptors } from '@nestjs/common';
-import { plainToInstance } from 'class-transformer';
-import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
+import { PropuestaService } from './Propuesta.service';
+import { Get, Param, Post, Delete } from '@nestjs/common';
+import { HttpCode } from '@nestjs/common';
 import { PropuestaDto } from './propuesta.dto/propuesta.dto';
 import { PropuestaEntity } from './propuesta.entity/propuesta.entity';
-import { PropuestaService } from './propuesta.service';
+import { plainToInstance } from 'class-transformer';
+import { Body } from '@nestjs/common';
+import { BusinessErrorsInterceptor } from 'src/shared/interceptors/business-errors.interceptor';
+import { UseInterceptors } from '@nestjs/common';
 
 @Controller('propuestas')
 @UseInterceptors(BusinessErrorsInterceptor)

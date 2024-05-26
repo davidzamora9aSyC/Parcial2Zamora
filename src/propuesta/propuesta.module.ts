@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { PropuestaEntity } from './Propuesta.entity/Propuesta.entity';
 import { PropuestaController } from './propuesta.controller';
 
+
 @Module({
   providers: [PropuestaService],
   imports: [TypeOrmModule.forFeature([PropuestaEntity])],
