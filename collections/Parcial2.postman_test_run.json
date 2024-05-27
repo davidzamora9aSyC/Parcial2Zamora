@@ -1,0 +1,1271 @@
+{
+	"id": "b69bb767-a923-44e7-8133-02cbd80e8417",
+	"name": "Parcial2",
+	"timestamp": "2024-05-27T02:50:27.387Z",
+	"collection_id": "23415404-787a203d-0da8-48a5-91cc-4b213f1dcdf4",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 54,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-05-27T02:50:23.912Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "37cd52b5-f3e6-47a8-858c-cf3b4258e6e4",
+			"name": "Create proyecto",
+			"url": "http://localhost:3000/api/v1/proyectos",
+			"time": 162,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				162
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "13134acf-7e15-4d68-bf5f-edd6b7f94b36",
+			"name": "Create proyecto con fecha fin anterior a la de inicio",
+			"url": "http://localhost:3000/api/v1/proyectos",
+			"time": 4,
+			"responseCode": {
+				"code": 412,
+				"name": "Precondition Failed"
+			},
+			"tests": {
+				"Status code is 412": true,
+				"Get expected error message": true
+			},
+			"testPassFailCounts": {
+				"Status code is 412": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Get expected error message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 412": true,
+					"Get expected error message": true
+				}
+			]
+		},
+		{
+			"id": "8c125afd-9b97-487d-8eea-433b7d30f4a7",
+			"name": "Create estudiante",
+			"url": "http://localhost:3000/api/v1/estudiantes",
+			"time": 8,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "37ad704b-8ddc-4fb4-a958-befd9d954637",
+			"name": "Create estudiante con codigo malo",
+			"url": "http://localhost:3000/api/v1/estudiantes",
+			"time": 4,
+			"responseCode": {
+				"code": 412,
+				"name": "Precondition Failed"
+			},
+			"tests": {
+				"Status code is 412": true,
+				"Get expected error message": true
+			},
+			"testPassFailCounts": {
+				"Status code is 412": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Get expected error message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 412": true,
+					"Get expected error message": true
+				}
+			]
+		},
+		{
+			"id": "9bec853d-ef67-411c-b8c3-3234c1dcf511",
+			"name": "Asociar proyecto con estudiante",
+			"url": "http://localhost:3000/api/v1/estudiantes/3bfea0cb-ba1e-4637-b825-249e5fe3614a/proyectos/6e7609b8-56bb-4872-b388-4922d52f8498",
+			"time": 13,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "71b01bd0-9820-4609-8e98-fc0701d5d10a",
+			"name": "Asociar proyecto con estudiante que no existe",
+			"url": "http://localhost:3000/api/v1/estudiantes/ffffffff-ffff-ffff-ffff-ffffffffffff/proyectos/6e7609b8-56bb-4872-b388-4922d52f8498",
+			"time": 5,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Get expected error message": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Get expected error message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Get expected error message": true
+				}
+			]
+		},
+		{
+			"id": "21796d60-fc7b-410c-b0a0-c4b3fa52de75",
+			"name": "Asociar proyecto que no existe con estudiante",
+			"url": "http://localhost:3000/api/v1/estudiantes/3bfea0cb-ba1e-4637-b825-249e5fe3614a/proyectos/ffffffff-ffff-ffff-ffff-ffffffffffff",
+			"time": 8,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Get expected error message": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Get expected error message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Get expected error message": true
+				}
+			]
+		},
+		{
+			"id": "88eb81b3-4478-45c0-b450-fe04cf763cde",
+			"name": "Get estudiante",
+			"url": "http://localhost:3000/api/v1/estudiantes/3bfea0cb-ba1e-4637-b825-249e5fe3614a",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "fe9cde81-318b-4cfe-9c5b-742f0fb03ce5",
+			"name": "Get estudiante no existente",
+			"url": "http://localhost:3000/api/v1/estudiantes/ffffffff-ffff-ffff-ffff-ffffffffffff",
+			"time": 5,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Get expected error message": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Get expected error message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Get expected error message": true
+				}
+			]
+		},
+		{
+			"id": "59179741-252e-469d-82d2-26c1cfd4d8f7",
+			"name": "Add propuesta",
+			"url": "http://localhost:3000/api/v1/propuestas",
+			"time": 8,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "2fbc11a5-39a8-4cf4-be1f-3607d93fee08",
+			"name": "Add propuesta sin titulo",
+			"url": "http://localhost:3000/api/v1/propuestas",
+			"time": 4,
+			"responseCode": {
+				"code": 412,
+				"name": "Precondition Failed"
+			},
+			"tests": {
+				"Status code is 412": true,
+				"Get expected error message": true
+			},
+			"testPassFailCounts": {
+				"Status code is 412": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Get expected error message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 412": true,
+					"Get expected error message": true
+				}
+			]
+		},
+		{
+			"id": "ca3f70e2-007c-4231-8e8d-ef4a639d6c34",
+			"name": "Asociar propuesta y proyecto",
+			"url": "http://localhost:3000/api/v1/propuestas/ed4d78f8-237d-4dd8-8d05-d4f4d49cb65e/proyectos/6e7609b8-56bb-4872-b388-4922d52f8498",
+			"time": 12,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "05732b53-7f41-40d2-bef5-c166eccbb36a",
+			"name": "Asociar propuesta y proyecto que no existe",
+			"url": "http://localhost:3000/api/v1/propuestas/ed4d78f8-237d-4dd8-8d05-d4f4d49cb65e/proyectos/ffffffff-ffff-ffff-ffff-ffffffffffff",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Get expected error message": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Get expected error message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Get expected error message": true
+				}
+			]
+		},
+		{
+			"id": "d8a96a13-78ce-4a6b-ae1c-806be07544db",
+			"name": "Asociar propuesta que no existe  y proyecto",
+			"url": "http://localhost:3000/api/v1/propuestas/ffffffff-ffff-ffff-ffff-ffffffffffff/proyectos/6e7609b8-56bb-4872-b388-4922d52f8498",
+			"time": 4,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Get expected error message": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Get expected error message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Get expected error message": true
+				}
+			]
+		},
+		{
+			"id": "e8845c6c-8032-4c66-b683-b9d41538cb39",
+			"name": "Get all propuestas",
+			"url": "http://localhost:3000/api/v1/propuestas",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Number of propuestas > 0": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Number of propuestas > 0": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Number of propuestas > 0": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "db0b0f29-7fde-4c3a-b257-781e3465b68c",
+			"name": "Get one propuesta",
+			"url": "http://localhost:3000/api/v1/propuestas/ed4d78f8-237d-4dd8-8d05-d4f4d49cb65e",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "ec53d0b9-c70a-43b8-a995-d215df6ba3ea",
+			"name": "Get one propuesta no existente",
+			"url": "http://localhost:3000/api/v1/propuestas/ffffffff-ffff-ffff-ffff-ffffffffffff",
+			"time": 5,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Get expected error message": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Get expected error message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Get expected error message": true
+				}
+			]
+		},
+		{
+			"id": "0ce07a6a-3bdd-4be3-a645-de0d3f654189",
+			"name": "Add propuesta Copy",
+			"url": "http://localhost:3000/api/v1/propuestas",
+			"time": 7,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "38ff3abe-5211-411b-b725-ca7965706783",
+			"name": "delete una propuesta",
+			"url": "http://localhost:3000/api/v1/propuestas/1b1437e5-7ae5-4d32-8bdf-5ab608091d53",
+			"time": 10,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 204": true
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status code is 204": true
+				}
+			]
+		},
+		{
+			"id": "9492c0cd-3180-4d40-a7a6-3ad10d871b5e",
+			"name": "delete una propuesta no existente",
+			"url": "http://localhost:3000/api/v1/propuestas/ffffffff-ffff-ffff-ffff-ffffffffffff",
+			"time": 4,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Get expected error message": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Get expected error message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Get expected error message": true
+				}
+			]
+		},
+		{
+			"id": "6afcc877-ca30-4953-ba8a-dd0e96a87be2",
+			"name": "Add propuesta Copy 2",
+			"url": "http://localhost:3000/api/v1/propuestas",
+			"time": 7,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "f8328dd1-a529-4021-9a40-f5ee0fecb9c8",
+			"name": "Create proyecto Copy",
+			"url": "http://localhost:3000/api/v1/proyectos",
+			"time": 8,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "8a78239f-ba3a-4784-9739-bb864175a869",
+			"name": "Asociar propuesta y proyecto Copy",
+			"url": "http://localhost:3000/api/v1/propuestas/7d2341c7-9c4b-4523-b3b2-67f64ca3c2b6/proyectos/7b08e73a-ba1b-4303-ba8b-d141ba2edfa2",
+			"time": 10,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "d125324c-6950-4271-b3e4-9d2a66d933b6",
+			"name": "delete una propuesta con proyecto",
+			"url": "http://localhost:3000/api/v1/propuestas/7d2341c7-9c4b-4523-b3b2-67f64ca3c2b6",
+			"time": 6,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Get expected error message": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Get expected error message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Get expected error message": true
+				}
+			]
+		},
+		{
+			"id": "922fa861-b85b-4091-a015-58554e5a5fcf",
+			"name": "crear profesor",
+			"url": "http://localhost:3000/api/v1/profesores",
+			"time": 7,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "e206c155-10f5-4a99-be3a-6d40a30c2391",
+			"name": "Delete profesor por cedula",
+			"url": "http://localhost:3000/api/v1/profesores/cedula/123456789",
+			"time": 9,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 204": true
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status code is 204": true
+				}
+			]
+		},
+		{
+			"id": "67593192-89a7-4112-b7ce-80ee92afce80",
+			"name": "crear profesor Copy",
+			"url": "http://localhost:3000/api/v1/profesores",
+			"time": 6,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "a773d853-abd3-471c-bb33-c4058f01b6fd",
+			"name": "crear profesor con grupo de investigacion malo",
+			"url": "http://localhost:3000/api/v1/profesores",
+			"time": 3,
+			"responseCode": {
+				"code": 412,
+				"name": "Precondition Failed"
+			},
+			"tests": {
+				"Status code is 412": true,
+				"Get expected error message": true
+			},
+			"testPassFailCounts": {
+				"Status code is 412": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Get expected error message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"Status code is 412": true,
+					"Get expected error message": true
+				}
+			]
+		},
+		{
+			"id": "9afd5f7c-ce95-40ce-bc5e-25e4ac5d4e40",
+			"name": "Asociar profesor y propuesta",
+			"url": "http://localhost:3000/api/v1/profesores/d0c9ca18-db8e-40a1-a03b-d26b4aa59546/propuestas/7d2341c7-9c4b-4523-b3b2-67f64ca3c2b6",
+			"time": 13,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "3921189a-7258-42f2-b0b9-3abda994e325",
+			"name": "Asociar profesor y propuesta no existente",
+			"url": "http://localhost:3000/api/v1/profesores/d0c9ca18-db8e-40a1-a03b-d26b4aa59546/propuestas/ffffffff-ffff-ffff-ffff-ffffffffffff",
+			"time": 8,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Get expected error message": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Get expected error message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Get expected error message": true
+				}
+			]
+		},
+		{
+			"id": "34de3880-52ee-4b61-920b-d425910752a0",
+			"name": "Asociar profesor no existente y propuesta",
+			"url": "http://localhost:3000/api/v1/profesores/ffffffff-ffff-ffff-ffff-ffffffffffff/propuestas/7d2341c7-9c4b-4523-b3b2-67f64ca3c2b6",
+			"time": 4,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Get expected error message": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Get expected error message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Get expected error message": true
+				}
+			]
+		},
+		{
+			"id": "d1948a5b-d0b9-4949-acf0-5c5b9f5a38a7",
+			"name": "Get profesor",
+			"url": "http://localhost:3000/api/v1/profesores/d0c9ca18-db8e-40a1-a03b-d26b4aa59546",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "85ccb0c8-f40d-449f-8dac-1da3d67cf72e",
+			"name": "Get profesor no existnete",
+			"url": "http://localhost:3000/api/v1/profesores/ffffffff-ffff-ffff-ffff-ffffffffffff",
+			"time": 5,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 404": true
+				}
+			]
+		},
+		{
+			"id": "ca72e029-414e-4435-9aad-d0f96e0d73c4",
+			"name": "Delete profesor por id con propuesta con proyecto",
+			"url": "http://localhost:3000/api/v1/profesores/d0c9ca18-db8e-40a1-a03b-d26b4aa59546",
+			"time": 6,
+			"responseCode": {
+				"code": 412,
+				"name": "Precondition Failed"
+			},
+			"tests": {
+				"Status code is 412": true,
+				"Get expected error message": true
+			},
+			"testPassFailCounts": {
+				"Status code is 412": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Get expected error message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 412": true,
+					"Get expected error message": true
+				}
+			]
+		},
+		{
+			"id": "98340c79-5811-462a-84a5-092e44f9a04b",
+			"name": "Delete profesor por cedula con propuesta con proyecto",
+			"url": "http://localhost:3000/api/v1/profesores/cedula/12345678",
+			"time": 6,
+			"responseCode": {
+				"code": 412,
+				"name": "Precondition Failed"
+			},
+			"tests": {
+				"Status code is 412": true,
+				"Get expected error message": true
+			},
+			"testPassFailCounts": {
+				"Status code is 412": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Get expected error message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 412": true,
+					"Get expected error message": true
+				}
+			]
+		},
+		{
+			"id": "c864ba47-0acc-4700-b9e7-d0bc80cc318a",
+			"name": "crear profesor Copy 2",
+			"url": "http://localhost:3000/api/v1/profesores",
+			"time": 6,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "a88c3ee5-f814-4fed-829b-9aa1975994cb",
+			"name": "Delete profesor por id",
+			"url": "http://localhost:3000/api/v1/profesores/c4764381-4bd8-4d87-9842-32f350bc196a",
+			"time": 8,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 204": true
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 204": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 408,
+	"collection": {
+		"requests": [
+			{
+				"id": "37cd52b5-f3e6-47a8-858c-cf3b4258e6e4",
+				"method": "POST"
+			},
+			{
+				"id": "13134acf-7e15-4d68-bf5f-edd6b7f94b36",
+				"method": "POST"
+			},
+			{
+				"id": "8c125afd-9b97-487d-8eea-433b7d30f4a7",
+				"method": "POST"
+			},
+			{
+				"id": "37ad704b-8ddc-4fb4-a958-befd9d954637",
+				"method": "POST"
+			},
+			{
+				"id": "9bec853d-ef67-411c-b8c3-3234c1dcf511",
+				"method": "POST"
+			},
+			{
+				"id": "71b01bd0-9820-4609-8e98-fc0701d5d10a",
+				"method": "POST"
+			},
+			{
+				"id": "21796d60-fc7b-410c-b0a0-c4b3fa52de75",
+				"method": "POST"
+			},
+			{
+				"id": "88eb81b3-4478-45c0-b450-fe04cf763cde",
+				"method": "GET"
+			},
+			{
+				"id": "fe9cde81-318b-4cfe-9c5b-742f0fb03ce5",
+				"method": "GET"
+			},
+			{
+				"id": "59179741-252e-469d-82d2-26c1cfd4d8f7",
+				"method": "POST"
+			},
+			{
+				"id": "2fbc11a5-39a8-4cf4-be1f-3607d93fee08",
+				"method": "POST"
+			},
+			{
+				"id": "ca3f70e2-007c-4231-8e8d-ef4a639d6c34",
+				"method": "POST"
+			},
+			{
+				"id": "05732b53-7f41-40d2-bef5-c166eccbb36a",
+				"method": "POST"
+			},
+			{
+				"id": "d8a96a13-78ce-4a6b-ae1c-806be07544db",
+				"method": "POST"
+			},
+			{
+				"id": "e8845c6c-8032-4c66-b683-b9d41538cb39",
+				"method": "GET"
+			},
+			{
+				"id": "db0b0f29-7fde-4c3a-b257-781e3465b68c",
+				"method": "GET"
+			},
+			{
+				"id": "ec53d0b9-c70a-43b8-a995-d215df6ba3ea",
+				"method": "GET"
+			},
+			{
+				"id": "0ce07a6a-3bdd-4be3-a645-de0d3f654189",
+				"method": "POST"
+			},
+			{
+				"id": "38ff3abe-5211-411b-b725-ca7965706783",
+				"method": "DELETE"
+			},
+			{
+				"id": "9492c0cd-3180-4d40-a7a6-3ad10d871b5e",
+				"method": "DELETE"
+			},
+			{
+				"id": "6afcc877-ca30-4953-ba8a-dd0e96a87be2",
+				"method": "POST"
+			},
+			{
+				"id": "f8328dd1-a529-4021-9a40-f5ee0fecb9c8",
+				"method": "POST"
+			},
+			{
+				"id": "8a78239f-ba3a-4784-9739-bb864175a869",
+				"method": "POST"
+			},
+			{
+				"id": "d125324c-6950-4271-b3e4-9d2a66d933b6",
+				"method": "DELETE"
+			},
+			{
+				"id": "922fa861-b85b-4091-a015-58554e5a5fcf",
+				"method": "POST"
+			},
+			{
+				"id": "e206c155-10f5-4a99-be3a-6d40a30c2391",
+				"method": "DELETE"
+			},
+			{
+				"id": "67593192-89a7-4112-b7ce-80ee92afce80",
+				"method": "POST"
+			},
+			{
+				"id": "a773d853-abd3-471c-bb33-c4058f01b6fd",
+				"method": "POST"
+			},
+			{
+				"id": "9afd5f7c-ce95-40ce-bc5e-25e4ac5d4e40",
+				"method": "POST"
+			},
+			{
+				"id": "3921189a-7258-42f2-b0b9-3abda994e325",
+				"method": "POST"
+			},
+			{
+				"id": "34de3880-52ee-4b61-920b-d425910752a0",
+				"method": "POST"
+			},
+			{
+				"id": "d1948a5b-d0b9-4949-acf0-5c5b9f5a38a7",
+				"method": "GET"
+			},
+			{
+				"id": "85ccb0c8-f40d-449f-8dac-1da3d67cf72e",
+				"method": "GET"
+			},
+			{
+				"id": "ca72e029-414e-4435-9aad-d0f96e0d73c4",
+				"method": "DELETE"
+			},
+			{
+				"id": "98340c79-5811-462a-84a5-092e44f9a04b",
+				"method": "DELETE"
+			},
+			{
+				"id": "c864ba47-0acc-4700-b9e7-d0bc80cc318a",
+				"method": "POST"
+			},
+			{
+				"id": "a88c3ee5-f814-4fed-829b-9aa1975994cb",
+				"method": "DELETE"
+			}
+		]
+	}
+}

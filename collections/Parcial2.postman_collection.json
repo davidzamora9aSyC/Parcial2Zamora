@@ -1,0 +1,3142 @@
+{
+	"info": {
+		"_postman_id": "787a203d-0da8-48a5-91cc-4b213f1dcdf4",
+		"name": "Parcial2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23415404"
+	},
+	"item": [
+		{
+			"name": "Proyecto",
+			"item": [
+				{
+					"name": "Create proyecto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json()\r",
+									"pm.collectionVariables.set(\"proyecto_id\", data.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fechaInicio\": \"2024-05-26T00:00:00Z\",\r\n    \"fechaFin\": \"2024-06-26T00:00:00Z\",\r\n    \"url\": \"https://example.com/proyecto\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/proyectos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"proyectos"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear proyecto",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fechaInicio\": \"2024-05-26T00:00:00Z\",\r\n    \"fechaFin\": \"2024-06-26T00:00:00Z\",\r\n    \"url\": \"https://example.com/proyecto\",\r\n    \"estudiante\": null,\r\n    \"propuesta\": null\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/proyectos",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"proyectos"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "188"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"bc-YfU9MHhnnAjDrCuRDXQq/LvF530\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 May 2024 18:06:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"fechaInicio\": \"2024-05-26T00:00:00Z\",\n    \"fechaFin\": \"2024-06-26T00:00:00Z\",\n    \"url\": \"https://example.com/proyecto\",\n    \"estudiante\": null,\n    \"propuesta\": null,\n    \"id\": \"b653c4e9-bfbd-48bd-91c1-2e8d624e530c\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create proyecto con fecha fin anterior a la de inicio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 412\", function () {\r",
+									"   pm.response.to.have.status(412);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"La propuesta tiene una fecha de finalizacion anterior a la de inicio\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fechaInicio\": \"2024-05-26T00:00:00Z\",\r\n    \"fechaFin\": \"2021-06-26T00:00:00Z\",\r\n    \"url\": \"https://example.com/proyecto\",\r\n    \"estudiante\": null,\r\n    \"propuesta\": null\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/proyectos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"proyectos"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create proyecto con fecha fin anterior a la de inicio",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fechaInicio\": \"2024-05-26T00:00:00Z\",\r\n    \"fechaFin\": \"2021-06-26T00:00:00Z\",\r\n    \"url\": \"https://example.com/proyecto\",\r\n    \"estudiante\": null,\r\n    \"propuesta\": null\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/proyectos",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"proyectos"
+									]
+								}
+							},
+							"status": "Precondition Failed",
+							"code": 412,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "99"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"63-2lp8t/R0Wdr5AeEAsplz/YhPBw4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 27 May 2024 01:45:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 412,\n    \"message\": \"La propuesta tiene una fecha de finalizacion anterior a la de inicio\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Estudiante",
+			"item": [
+				{
+					"name": "Create estudiante",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json()\r",
+									"pm.collectionVariables.set(\"estudiante_id\", data.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Juan Perez 2\",\r\n    \"codigoEstudiante\": \"2023123461\",\r\n    \"numCredsAprovados\": 90\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/estudiantes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiantes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create estudiante",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"Juan Perez 2\",\r\n    \"codigoEstudiante\": \"2023123456\",\r\n    \"numCredsAprovados\": 90\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/estudiantes",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"estudiantes"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "124"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7c-mRdMNcfpf3nV8eO79DwNvY7rUdc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 May 2024 20:26:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"nombre\": \"Juan Perez 2\",\n    \"codigoEstudiante\": \"2023123456\",\n    \"numCredsAprovados\": 90,\n    \"id\": \"283367dd-ec2c-467a-a493-36af85d51735\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create estudiante con codigo malo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 412\", function () {\r",
+									"   pm.response.to.have.status(412);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"El id del estudiante NO tiene 10 caracteres\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Juan Perez 2\",\r\n    \"codigoEstudiante\": \"206\",\r\n    \"numCredsAprovados\": 90,\r\n    \"proyecto\": null\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/estudiantes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiantes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "El id del estudiante NO tiene 10 caracteres",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"Juan Perez 2\",\r\n    \"codigoEstudiante\": \"206\",\r\n    \"numCredsAprovados\": 90,\r\n    \"proyecto\": null\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/estudiantes",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"estudiantes"
+									]
+								}
+							},
+							"status": "Precondition Failed",
+							"code": 412,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "74"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4a-UuplFDqoko1pIOqLa1iTHTJomA8\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 27 May 2024 01:47:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 412,\n    \"message\": \"El id del estudiante NO tiene 10 caracteres\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Asociar proyecto con estudiante",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Juan Perez 2\",\r\n    \"codigoEstudiante\": \"2023123456\",\r\n    \"numCredsAprovados\": 90,\r\n    \"proyecto\": null\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/estudiantes/{{estudiante_id}}/proyectos/{{proyecto_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiantes",
+								"{{estudiante_id}}",
+								"proyectos",
+								"{{proyecto_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Asociar proyecto y estudiante",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"Juan Perez 2\",\r\n    \"codigoEstudiante\": \"2023123456\",\r\n    \"numCredsAprovados\": 90,\r\n    \"proyecto\": null\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/estudiantes/{{estudiante_id}}/proyectos/{{proyecto_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"estudiantes",
+										"{{estudiante_id}}",
+										"proyectos",
+										"{{proyecto_id}}"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "297"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"129-V8pbNU5YdKlyml0C8O0xOfTWSec\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 May 2024 20:27:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"283367dd-ec2c-467a-a493-36af85d51735\",\n    \"nombre\": \"Juan Perez 2\",\n    \"codigoEstudiante\": \"2023123456\",\n    \"numCredsAprovados\": 90,\n    \"proyecto\": {\n        \"id\": \"be09323c-6c6f-41d2-abfc-8eb9fd0474b4\",\n        \"fechaInicio\": \"2024-05-26T00:00:00.000Z\",\n        \"fechaFin\": \"2024-06-26T00:00:00.000Z\",\n        \"url\": \"https://example.com/proyecto\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Asociar proyecto con estudiante que no existe",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The student with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Juan Perez 2\",\r\n    \"codigoEstudiante\": \"2023123456\",\r\n    \"numCredsAprovados\": 90,\r\n    \"proyecto\": null\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/estudiantes/{{estudiante_id}}/proyectos/{{proyecto_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiantes",
+								"{{estudiante_id}}",
+								"proyectos",
+								"{{proyecto_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Asociar proyecto con estudiante Copy",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"Juan Perez 2\",\r\n    \"codigoEstudiante\": \"2023123456\",\r\n    \"numCredsAprovados\": 90,\r\n    \"proyecto\": null\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/estudiantes/{{bad_id}}/proyectos/{{proyecto_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"estudiantes",
+										"{{bad_id}}",
+										"proyectos",
+										"{{proyecto_id}}"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "74"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4a-0bLVd6X9uKBG+hTUgl1JRrz3vss\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 27 May 2024 01:50:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The student with the given id was not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Asociar proyecto que no existe con estudiante",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The project with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Juan Perez 2\",\r\n    \"codigoEstudiante\": \"2023123456\",\r\n    \"numCredsAprovados\": 90,\r\n    \"proyecto\": null\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/estudiantes/{{estudiante_id}}/proyectos/{{bad_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiantes",
+								"{{estudiante_id}}",
+								"proyectos",
+								"{{bad_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Asociar proyecto con estudiante que no existe Copy",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"Juan Perez 2\",\r\n    \"codigoEstudiante\": \"2023123456\",\r\n    \"numCredsAprovados\": 90,\r\n    \"proyecto\": null\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/estudiantes/{{estudiante_id}}/proyectos/{{bad_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"estudiantes",
+										"{{estudiante_id}}",
+										"proyectos",
+										"{{bad_id}}"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "74"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4a-W9dygCb4LNrj2XEZ/JgzJjWQtzI\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 27 May 2024 01:51:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The project with the given id was not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get estudiante",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/estudiantes/{{estudiante_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiantes",
+								"{{estudiante_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get estudiante",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/estudiantes/{{estudiante_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"estudiantes",
+										"{{estudiante_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "297"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"129-V8pbNU5YdKlyml0C8O0xOfTWSec\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 May 2024 20:28:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"283367dd-ec2c-467a-a493-36af85d51735\",\n    \"nombre\": \"Juan Perez 2\",\n    \"codigoEstudiante\": \"2023123456\",\n    \"numCredsAprovados\": 90,\n    \"proyecto\": {\n        \"id\": \"be09323c-6c6f-41d2-abfc-8eb9fd0474b4\",\n        \"fechaInicio\": \"2024-05-26T00:00:00.000Z\",\n        \"fechaFin\": \"2024-06-26T00:00:00.000Z\",\n        \"url\": \"https://example.com/proyecto\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get estudiante no existente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The estudiante with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/estudiantes/{{bad_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiantes",
+								"{{bad_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get estudiante no existente",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/estudiantes/{{bad_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"estudiantes",
+										"{{bad_id}}"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4d-MiDZn+poKT4zWohOE230JEpfZNA\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 27 May 2024 01:52:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The estudiante with the given id was not found\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Propuesta",
+			"item": [
+				{
+					"name": "Add propuesta",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json()\r",
+									"pm.collectionVariables.set(\"propuesta_id\", data.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\": \"Nuevo Proyecto de IA 2\",\r\n    \"descripcion\": \"Este proyecto se centra en el desarrollo de un modelo de inteligencia artificial 3\",\r\n    \"palabraClave\": \"Inteligencia Artificial\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/propuestas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"propuestas"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add propuesta",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"titulo\": \"Nuevo Proyecto de IA\",\r\n    \"descripcion\": \"Este proyecto se centra en el desarrollo de un modelo de inteligencia artificial 2.\",\r\n    \"palabraClave\": \"Inteligencia Artificial\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/propuestas",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"propuestas"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "218"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"da-tb9fYfBxXF/1/wNuLHb7WN926kg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 May 2024 20:33:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"titulo\": \"Nuevo Proyecto de IA\",\n    \"descripcion\": \"Este proyecto se centra en el desarrollo de un modelo de inteligencia artificial 2.\",\n    \"palabraClave\": \"Inteligencia Artificial\",\n    \"id\": \"0cddfc5e-e776-4e09-8d47-e391887db4e4\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add propuesta sin titulo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 412\", function () {\r",
+									"   pm.response.to.have.status(412);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"La propuesta no tiene titulo\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\": \"\",\r\n    \"descripcion\": \"Este proyecto se centra en el desarrollo de un modelo de inteligencia artificial 3\",\r\n    \"palabraClave\": \"Inteligencia Artificial\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/propuestas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"propuestas"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add propuesta sin titulo",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"titulo\": \"\",\r\n    \"descripcion\": \"Este proyecto se centra en el desarrollo de un modelo de inteligencia artificial 3\",\r\n    \"palabraClave\": \"Inteligencia Artificial\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/propuestas",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"propuestas"
+									]
+								}
+							},
+							"status": "Precondition Failed",
+							"code": 412,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "59"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3b-7E2iL+WXqQ4cwIi2JYSq2kOTNGo\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 27 May 2024 01:54:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 412,\n    \"message\": \"La propuesta no tiene titulo\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Asociar propuesta y proyecto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/propuestas/{{propuesta_id}}/proyectos/{{proyecto_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"propuestas",
+								"{{propuesta_id}}",
+								"proyectos",
+								"{{proyecto_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ASociar propuesta y proyecto",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/propuestas/{{propuesta_id}}/proyectos/{{proyecto_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"propuestas",
+										"{{propuesta_id}}",
+										"proyectos",
+										"{{proyecto_id}}"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "391"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"187-oBZpE6/ttxKEGUgrCkGMZEYhCtw\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 May 2024 20:35:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"0cddfc5e-e776-4e09-8d47-e391887db4e4\",\n    \"titulo\": \"Nuevo Proyecto de IA\",\n    \"descripcion\": \"Este proyecto se centra en el desarrollo de un modelo de inteligencia artificial 2.\",\n    \"palabraClave\": \"Inteligencia Artificial\",\n    \"proyecto\": {\n        \"id\": \"d8420a97-9581-4d78-ae4d-f78008b35979\",\n        \"fechaInicio\": \"2024-05-26T00:00:00.000Z\",\n        \"fechaFin\": \"2024-06-26T00:00:00.000Z\",\n        \"url\": \"https://example.com/proyecto\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Asociar propuesta y proyecto que no existe",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The project with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\": \"Nuevo Proyecto de IA\",\r\n    \"descripcion\": \"Este proyecto se centra en el desarrollo de un modelo de inteligencia artificial 2.\",\r\n    \"palabraClave\": \"Inteligencia Artificial\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/propuestas/{{propuesta_id}}/proyectos/{{bad_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"propuestas",
+								"{{propuesta_id}}",
+								"proyectos",
+								"{{bad_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Asociar propuesta y proyecto que no existe",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"titulo\": \"Nuevo Proyecto de IA\",\r\n    \"descripcion\": \"Este proyecto se centra en el desarrollo de un modelo de inteligencia artificial 2.\",\r\n    \"palabraClave\": \"Inteligencia Artificial\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/propuestas/{{propuesta_id}}/proyectos/{{bad_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"propuestas",
+										"{{propuesta_id}}",
+										"proyectos",
+										"{{bad_id}}"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "74"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4a-W9dygCb4LNrj2XEZ/JgzJjWQtzI\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 27 May 2024 01:57:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The project with the given id was not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Asociar propuesta que no existe  y proyecto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The propuesta with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\": \"Nuevo Proyecto de IA\",\r\n    \"descripcion\": \"Este proyecto se centra en el desarrollo de un modelo de inteligencia artificial 2.\",\r\n    \"palabraClave\": \"Inteligencia Artificial\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/propuestas/{{bad_id}}/proyectos/{{proyecto_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"propuestas",
+								"{{bad_id}}",
+								"proyectos",
+								"{{proyecto_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Asociar propuesta y proyecto que no existe",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"titulo\": \"Nuevo Proyecto de IA\",\r\n    \"descripcion\": \"Este proyecto se centra en el desarrollo de un modelo de inteligencia artificial 2.\",\r\n    \"palabraClave\": \"Inteligencia Artificial\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/propuestas/{{propuesta_id}}/proyectos/{{bad_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"propuestas",
+										"{{propuesta_id}}",
+										"proyectos",
+										"{{bad_id}}"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "76"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4c-8aMTdU8H6SbgqhWya5JqLDyr1p4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 27 May 2024 01:55:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The propuesta with the given id was not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all propuestas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Number of propuestas > ' + 0, function () {\r",
+									"   var data = pm.response.json()\r",
+									"   pm.expect(data.length).to.greaterThan(0)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/propuestas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"propuestas"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all propuestas",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/propuestas",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"propuestas"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "409"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"199-mcXJVtkJVe85/TL7Z6ptnTYiTj4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 May 2024 20:35:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"0cddfc5e-e776-4e09-8d47-e391887db4e4\",\n        \"titulo\": \"Nuevo Proyecto de IA\",\n        \"descripcion\": \"Este proyecto se centra en el desarrollo de un modelo de inteligencia artificial 2.\",\n        \"palabraClave\": \"Inteligencia Artificial\",\n        \"profesor\": null,\n        \"proyecto\": {\n            \"id\": \"d8420a97-9581-4d78-ae4d-f78008b35979\",\n            \"fechaInicio\": \"2024-05-26T00:00:00.000Z\",\n            \"fechaFin\": \"2024-06-26T00:00:00.000Z\",\n            \"url\": \"https://example.com/proyecto\"\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get one propuesta",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/propuestas/{{propuesta_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"propuestas",
+								"{{propuesta_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get one propuesta",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/propuestas/{{propuesta_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"propuestas",
+										"{{propuesta_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "407"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"197-rmkApOhuQH0rOAJVJg9YPBAS98M\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 May 2024 20:35:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"0cddfc5e-e776-4e09-8d47-e391887db4e4\",\n    \"titulo\": \"Nuevo Proyecto de IA\",\n    \"descripcion\": \"Este proyecto se centra en el desarrollo de un modelo de inteligencia artificial 2.\",\n    \"palabraClave\": \"Inteligencia Artificial\",\n    \"profesor\": null,\n    \"proyecto\": {\n        \"id\": \"d8420a97-9581-4d78-ae4d-f78008b35979\",\n        \"fechaInicio\": \"2024-05-26T00:00:00.000Z\",\n        \"fechaFin\": \"2024-06-26T00:00:00.000Z\",\n        \"url\": \"https://example.com/proyecto\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get one propuesta no existente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The propuesta with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/propuestas/{{bad_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"propuestas",
+								"{{bad_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get one propuesta no existente",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/propuestas/{{bad_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"propuestas",
+										"{{bad_id}}"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "76"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4c-8aMTdU8H6SbgqhWya5JqLDyr1p4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 27 May 2024 01:58:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The propuesta with the given id was not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete una propuesta",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"   pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/propuestas/{{propuesta_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"propuestas",
+								"{{propuesta_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete una propuesta",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/propuestas/{{propuesta_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"propuestas",
+										"{{propuesta_id}}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 May 2024 20:41:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "delete una propuesta no existente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"La propuesta no existe\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/propuestas/{{bad_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"propuestas",
+								"{{bad_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete una propuesta no existente",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/propuestas/{{bad_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"propuestas",
+										"{{bad_id}}"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "53"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"35-z0R9YkNh+YxQPYDBT45UHyDSVGc\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 27 May 2024 01:59:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La propuesta no existe\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete una propuesta con proyecto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"La propuesta no se puede eliminar porque tiene un proyecto\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/propuestas/{{propuesta_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"propuestas",
+								"{{propuesta_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete una propuesta ncon proyecto",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/propuestas/{{propuesta_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"propuestas",
+										"{{propuesta_id}}"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"59-ASQEfDJZIaKNRbOXxtSeSDQRcUA\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 27 May 2024 02:01:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La propuesta no se puede eliminar porque tiene un proyecto\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Profesor",
+			"item": [
+				{
+					"name": "crear profesor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json()\r",
+									"pm.collectionVariables.set(\"profesor_id\", data.id);\r",
+									"pm.collectionVariables.set(\"profesor_cedula\", data.cedula)\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Juan Pérez\",\r\n    \"cedula\": 12345678,\r\n    \"grupoInvestigacion\": \"TICSW\",\r\n    \"numeroExtension\": 1010\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/profesores",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profesores"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear profesor",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\r\n    \"name\": \"Juan Pérez\",\r\n    \"cedula\": 12345678,\r\n    \"grupoInvestigacion\": \"TICSW\",\r\n    \"numeroExtension\": 1010\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/profesores",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profesores"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "136"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"88-YMOC7731LR/B67vvBIXgls68ZsY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 May 2024 21:04:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"name\": \"Juan Pérez\",\n    \"cedula\": 12345678,\n    \"grupoInvestigacion\": \"TICSW\",\n    \"numeroExtension\": 1010\n}"
+						}
+					]
+				},
+				{
+					"name": "crear profesor con grupo de investigacion malo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 412\", function () {\r",
+									"   pm.response.to.have.status(412);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The researching group is not valid\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Juan Pérez\",\r\n    \"cedula\": 12345678,\r\n    \"grupoInvestigacion\": \"TICSWq\",\r\n    \"numeroExtension\": 1010\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/profesores",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profesores"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "crear profesor con grupo de investigacion malo",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Juan Pérez\",\r\n    \"cedula\": 12345678,\r\n    \"grupoInvestigacion\": \"TICSWq\",\r\n    \"numeroExtension\": 1010\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/profesores",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profesores"
+									]
+								}
+							},
+							"status": "Precondition Failed",
+							"code": 412,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "65"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"41-HLAdw86bmOpJTn5Uwcr/e7K1o0Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 27 May 2024 02:02:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 412,\n    \"message\": \"The researching group is not valid\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Asociar profesor y propuesta",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/profesores/{{profesor_id}}/propuestas/{{propuesta_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profesores",
+								"{{profesor_id}}",
+								"propuestas",
+								"{{propuesta_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Asociar profesor y propuesta",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profesores/{{profesor_id}}/propuestas/{{propuesta_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profesores",
+										"{{profesor_id}}",
+										"propuestas",
+										"{{propuesta_id}}"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "369"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"171-qnZFuYKPP4W2b8vJW/9ab+YnIUc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 May 2024 21:08:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"name\": \"Juan Pérez\",\n    \"cedula\": 12345678,\n    \"grupoInvestigacion\": \"TICSW\",\n    \"numeroExtension\": 1010,\n    \"propuestas\": [\n        {\n            \"id\": \"7c16d534-689b-40cb-879f-2d533728b88e\",\n            \"titulo\": \"Nuevo Proyecto de IA\",\n            \"descripcion\": \"Este proyecto se centra en el desarrollo de un modelo de inteligencia artificial 3\",\n            \"palabraClave\": \"Inteligencia Artificial\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Asociar profesor y propuesta no existente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The proposal with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/profesores/{{profesor_id}}/propuestas/{{bad_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profesores",
+								"{{profesor_id}}",
+								"propuestas",
+								"{{bad_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Asociar profesor y propuesta no existente",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profesores/{{profesor_id}}/propuestas/{{bad_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profesores",
+										"{{profesor_id}}",
+										"propuestas",
+										"{{bad_id}}"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "75"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4b-4kWyE4Ae99BjYfqOLdObJMdEFak\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 27 May 2024 02:04:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The proposal with the given id was not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Asociar profesor no existente y propuesta",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The professor with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/profesores/{{bad_id}}/propuestas/{{propuesta_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profesores",
+								"{{bad_id}}",
+								"propuestas",
+								"{{propuesta_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Asociar profesor no existente  y propuesta",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profesores/{{bad_id}}/propuestas/{{propuesta_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profesores",
+										"{{bad_id}}",
+										"propuestas",
+										"{{propuesta_id}}"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "76"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4c-lJfpfbUVn9mJ+nG331ut2H0b3F0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 27 May 2024 02:09:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The professor with the given id was not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get profesor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/profesores/{{profesor_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profesores",
+								"{{profesor_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get profesor",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profesores/{{profesor_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profesores",
+										"{{profesor_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "369"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"171-cywe4HEaAO4hAOWn0QRaqFJaoLg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 May 2024 21:17:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"name\": \"Juan Pérez\",\n    \"cedula\": 12345678,\n    \"grupoInvestigacion\": \"TICSW\",\n    \"numeroExtension\": 1010,\n    \"propuestas\": [\n        {\n            \"id\": \"33a77bc6-519f-4b75-899b-d272446d013d\",\n            \"titulo\": \"Nuevo Proyecto de IA\",\n            \"descripcion\": \"Este proyecto se centra en el desarrollo de un modelo de inteligencia artificial 3\",\n            \"palabraClave\": \"Inteligencia Artificial\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get profesor no existnete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/profesores/{{bad_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profesores",
+								"{{bad_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get profesor",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profesores/{{profesor_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profesores",
+										"{{profesor_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "369"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"171-cywe4HEaAO4hAOWn0QRaqFJaoLg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 May 2024 21:17:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"name\": \"Juan Pérez\",\n    \"cedula\": 12345678,\n    \"grupoInvestigacion\": \"TICSW\",\n    \"numeroExtension\": 1010,\n    \"propuestas\": [\n        {\n            \"id\": \"33a77bc6-519f-4b75-899b-d272446d013d\",\n            \"titulo\": \"Nuevo Proyecto de IA\",\n            \"descripcion\": \"Este proyecto se centra en el desarrollo de un modelo de inteligencia artificial 3\",\n            \"palabraClave\": \"Inteligencia Artificial\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete profesor por id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"   pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/profesores/{{profesor_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profesores",
+								"{{profesor_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "borrar profesor por id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profesores/{{profesor_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profesores",
+										"{{profesor_id}}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 May 2024 22:19:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Delete profesor por id con propuesta con proyecto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 412\", function () {\r",
+									"   pm.response.to.have.status(412);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The professor cannot be deleted since a project exists\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/profesores/{{profesor_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profesores",
+								"{{profesor_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete profesor por id con propuesta con proyecto",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profesores/{{profesor_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profesores",
+										"{{profesor_id}}"
+									]
+								}
+							},
+							"status": "Precondition Failed",
+							"code": 412,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "85"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"55-/QxU4zuylv3XuzAEYecZQa9nIRw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 27 May 2024 02:13:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 412,\n    \"message\": \"The professor cannot be deleted since a project exists\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete profesor por cedula",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"   pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/profesores/cedula/{{profesor_cedula}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profesores",
+								"cedula",
+								"{{profesor_cedula}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete profesor por cedula",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profesores/cedula/{{profesor_cedula}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profesores",
+										"cedula",
+										"{{profesor_cedula}}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 May 2024 22:33:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Delete profesor por cedula con propuesta con proyecto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 412\", function () {\r",
+									"   pm.response.to.have.status(412);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The professor cannot be deleted since a project exists\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/profesores/cedula/{{profesor_cedula}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profesores",
+								"cedula",
+								"{{profesor_cedula}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete profesor por cedula con propuesta con proyecto",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profesores/cedula/{{profesor_cedula}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profesores",
+										"cedula",
+										"{{profesor_cedula}}"
+									]
+								}
+							},
+							"status": "Precondition Failed",
+							"code": 412,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "85"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"55-/QxU4zuylv3XuzAEYecZQa9nIRw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 27 May 2024 02:14:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 412,\n    \"message\": \"The professor cannot be deleted since a project exists\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000/api/v1"
+		},
+		{
+			"key": "base_url",
+			"value": ""
+		},
+		{
+			"key": "proyecto_id",
+			"value": ""
+		},
+		{
+			"key": "estudiante_id",
+			"value": ""
+		},
+		{
+			"key": "propuesta_id",
+			"value": ""
+		},
+		{
+			"key": "profesor_id",
+			"value": ""
+		},
+		{
+			"key": "profesor_cedula",
+			"value": ""
+		}
+	]
+}

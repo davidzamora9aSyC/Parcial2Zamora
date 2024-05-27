@@ -19,7 +19,7 @@ export class ProyectoService {
    async create(proyecto: ProyectoEntity): Promise<ProyectoEntity> {
 
     if(proyecto.fechaFin<proyecto.fechaInicio){
-        throw new BusinessLogicException("La propuesta tiene una fecha de finalizacion anterior a la de inicio", BusinessError.NOT_FOUND);
+        throw new BusinessLogicException("La propuesta tiene una fecha de finalizacion anterior a la de inicio", BusinessError.PRECONDITION_FAILED);
     }
        return await this.proyectoRepository.save(proyecto);
    }
