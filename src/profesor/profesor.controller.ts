@@ -6,7 +6,7 @@ import { ProfesorDto } from './profesor.dto/profesor.dto';
 import { ProfesorEntity } from './profesor.entity/profesor.entity';
 import { plainToInstance } from 'class-transformer';
 import { Body } from '@nestjs/common';
-import { BusinessErrorsInterceptor } from 'src/shared/interceptors/business-errors.interceptor';
+import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { UseInterceptors } from '@nestjs/common';
 
 @Controller('profesores')

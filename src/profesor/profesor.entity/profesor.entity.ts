@@ -1,7 +1,7 @@
 
 /* eslint-disable prettier/prettier */
 /* archivo: src/museum/museum.entity.ts */
-import { PropuestaEntity } from 'src/propuesta/propuesta.entity/propuesta.entity';
+import { PropuestaEntity } from '../../propuesta/propuesta.entity/propuesta.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { OneToOne } from 'typeorm';
 import { JoinColumn } from 'typeorm';

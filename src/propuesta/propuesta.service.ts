@@ -4,7 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { BusinessError, BusinessLogicException } from '../shared/errors/business-errors';
 import { Repository } from 'typeorm';
 import { PropuestaEntity } from './propuesta.entity/propuesta.entity';
-import { ProyectoEntity } from 'src/proyecto/proyecto.entity/proyecto.entity';
+import { ProyectoEntity } from '../proyecto/proyecto.entity/proyecto.entity';
 
 @Injectable()
 export class PropuestaService {
@@ -37,14 +37,16 @@ export class PropuestaService {
 
 
    async delete(id: string) {
-       const propuesta: PropuestaEntity = await this.propuestaRepository.findOne({where:{id}});
-       if (!propuesta){
+    const propuesta: PropuestaEntity = await this.propuestaRepository.findOne({ where: { id }, relations: ['proyecto'] });
+    if (!propuesta) {
         throw new BusinessLogicException("La propuesta no existe", BusinessError.NOT_FOUND);
-       }
-       if (!propuesta.proyecto==null)
-         throw new BusinessLogicException("La propuesta no se puede eliminar porque tiene un  proyecto", BusinessError.NOT_FOUND);
-       await this.propuestaRepository.remove(propuesta);
-   }
+    }
+    if (propuesta.proyecto != null) {
+        throw new BusinessLogicException("La propuesta no se puede eliminar porque tiene un proyecto", BusinessError.NOT_FOUND);
+    }
+    await this.propuestaRepository.remove(propuesta);
+}
+
 
    
    async addProyectoPropuesta(idPropuesta: string, idProyecto: string): Promise<PropuestaEntity> {

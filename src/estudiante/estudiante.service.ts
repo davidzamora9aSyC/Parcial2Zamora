@@ -6,7 +6,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { BusinessError, BusinessLogicException } from '../shared/errors/business-errors';
 import { Repository } from 'typeorm';
 import { EstudianteEntity } from './estudiante.entity/estudiante.entity';
-import { ProyectoEntity } from 'src/proyecto/proyecto.entity/proyecto.entity';
+import { ProyectoEntity } from '../proyecto/proyecto.entity/proyecto.entity';
 
 @Injectable()
 export class EstudianteService {

@@ -3,7 +3,7 @@ import { EstudianteService } from './Estudiante.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { EstudianteEntity } from './Estudiante.entity/Estudiante.entity';
 import { EstudianteController } from './estudiante.controller';
-import { ProyectoEntity } from 'src/proyecto/proyecto.entity/proyecto.entity';
+import { ProyectoEntity } from '../proyecto/proyecto.entity/proyecto.entity';
 
 @Module({
   providers: [EstudianteService],

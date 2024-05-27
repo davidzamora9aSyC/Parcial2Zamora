@@ -1,7 +1,7 @@
 
 
-import { EstudianteEntity } from 'src/estudiante/estudiante.entity/estudiante.entity';
-import { PropuestaEntity } from 'src/propuesta/propuesta.entity/propuesta.entity';
+import { EstudianteEntity } from '../../estudiante/estudiante.entity/estudiante.entity';
+import { PropuestaEntity } from '../../propuesta/propuesta.entity/propuesta.entity';
 import { Column, Entity, ManyToMany, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { OneToOne } from 'typeorm';
 import { ManyToOne } from 'typeorm';

@@ -3,7 +3,7 @@ import { ProfesorService } from './profesor.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProfesorEntity } from './profesor.entity/profesor.entity';
 import { ProfesorController } from './profesor.controller';
-import { PropuestaEntity } from 'src/propuesta/propuesta.entity/propuesta.entity';
+import { PropuestaEntity } from '../propuesta/propuesta.entity/propuesta.entity';
 
 @Module({
   providers: [ProfesorService],

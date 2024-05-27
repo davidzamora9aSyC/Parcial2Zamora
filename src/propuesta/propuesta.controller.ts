@@ -6,7 +6,7 @@ import { PropuestaDto } from './propuesta.dto/propuesta.dto';
 import { PropuestaEntity } from './propuesta.entity/propuesta.entity';
 import { plainToInstance } from 'class-transformer';
 import { Body } from '@nestjs/common';
-import { BusinessErrorsInterceptor } from 'src/shared/interceptors/business-errors.interceptor';
+import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { UseInterceptors } from '@nestjs/common';
 
 @Controller('propuestas')
